@@ -1,0 +1,229 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  font-family:Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Primary Theme Colors */
+  --radius: 0.625rem;
+  --black: #000000;
+  --white: #ffffff;
+  --zinc-800: #27272a;
+  --zinc-900: #18181b;
+  --zinc-950: #09090b;
+  --zinc-400: #a1a1aa;
+  --zinc-500: #71717a;
+  --zinc-600: #52525b;
+  --zinc-700: #3f3f46;
+  --gray-700: #374151;
+
+  /* Light Theme */
+  --background: var(--white);
+  --foreground: var(--black);
+  --primary: var(--black);
+  --primary-foreground: var(--white);
+  --card: var(--white);
+  --card-foreground: var(--black);
+  --popover: var(--white);
+  --popover-foreground: var(--black);
+  --secondary: var(--zinc-800);
+  --secondary-foreground: var(--gray-700);
+  --muted: #e5e7eb;
+  --muted-foreground: #6b7280;
+  --accent: var(--black);
+  --accent-foreground: var(--white);
+  --destructive: #ef4444;
+  --border: #e5e7eb;
+  --input: var(--white);
+  --ring: var(--black);
+
+  --sidebar: #f4f4f8;
+  --sidebar-foreground: var(--black);
+  --sidebar-primary: var(--black);
+  --sidebar-primary-foreground: var(--white);
+  --sidebar-accent: var(--black);
+  --sidebar-accent-foreground: var(--white);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--black);
+}
+
+/* Base HTML Elements */
+a {
+  font-weight: 300;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--secondary);
+}
+
+body {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+h1 {
+  font-size: 3.2em;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* button {
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  border: 1px solid transparent;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}*/
+button:hover {
+  background-color: var(--color-zinc-800);
+  transform: translateY(-1px);
+}
+
+/* button:focus,
+button:focus-visible {
+  outline: 3px solid rgba(0, 0, 0, 0.3);
+} */
+
+/* Dark Theme */
+.dark {
+  --background: var(--zinc-950);
+  --foreground: var(--white);
+  --card: var(--zinc-900);
+  --card-foreground: var(--white);
+  --popover: var(--zinc-900);
+  --popover-foreground: var(--white);
+  --primary: var(--white);
+  --primary-foreground: var(--black);
+  --secondary: var(--zinc-800);
+  --secondary-foreground: var(--zinc-400);
+  --muted: var(--zinc-800);
+  --muted-foreground: #94a3b8;
+  --accent: var(--zinc-800);
+  --accent-foreground: var(--white);
+  --destructive: #ef4444;
+  --border: var(--zinc-800);
+  --input: var(--zinc-800);
+  --ring: var(--zinc-800);
+
+  --sidebar: var(--zinc-900);
+  --sidebar-foreground: var(--white);
+  --sidebar-primary: var(--white);
+  --sidebar-primary-foreground: var(--black);
+  --sidebar-accent: #3b82f6;
+  --sidebar-accent-foreground: var(--white);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+}
+
+.dark a {
+  color: var(--primary);
+}
+
+.dark a:hover {
+  color: #ffffff;
+}
+
+/* .dark button {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+} */
+.dark button:hover {
+  background-color: var(--color-zinc-200);
+  transform: translateY(-1px);
+}
+
+/* Components */
+.card,
+.popover,
+.dialog {
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover,
+.interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.dark .card,
+.dark .popover,
+.dark .dialog {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark .card:hover,
+.dark .interactive:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  background-color: var(--white);
+  color: var(--foreground);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dark input,
+select,
+textarea {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  background-color: var(--zinc-800);
+  color: var(--foreground);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  box-shadow: 0 0 0 2px var(--color-zinc-800);
+}
+
+/* Tailwind Base Layer */
+@layer base {
+  * {
+    @apply border-[var(--border)] outline-[var(--ring)]/50;
+  }
+
+  body {
+    @apply bg-[var(--background)] text-[var(--foreground)];
+  }
+}
