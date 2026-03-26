@@ -13,7 +13,12 @@ dotenv.config();
 // CORS configuration
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5174",
+    origin: [
+      process.env.CLIENT_URL,
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "https://cp-track-frontend.onrender.com"
+    ].filter(Boolean),
     credentials: true, 
     methods: ["GET", "POST", "OPTIONS"], 
     allowedHeaders: ["Content-Type", "Authorization"], 
