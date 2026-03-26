@@ -1,6 +1,6 @@
 # Contest Tracker App
 
-**Live Demo:** https://cp-track.onrender.com/
+**Live Demo:** https://cp-track-frontend.onrender.com/
 
 A Contest Tracker App built for competitive programmers to monitor their performance and contests across LeetCode, CodeChef, and Codeforces. The application aggregates user statistics, contest history, and upcoming contests into a single, easy-to-use platform.
 
@@ -46,4 +46,4 @@ The application helps users track their competitive programming journey by conso
 
 ## Live Demo
 
-https://cp-track.onrender.com/
+https://cp-track-frontend.onrender.com/
