@@ -29,9 +29,23 @@ export const register = async (req, res) => {
       },
     });
 
+    // Generate JWT
+    const token = jwt.sign({ id: newUser.id }, process.env.JWT_SECRET_KEY, {
+      expiresIn: "10d",
+    });
+
+    // Remove password before sending response
+    const { password: storedPassword, ...userInfo } = newUser;
+
     res
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        maxAge: 1000 * 60 * 60 * 24 * 10,
+      })
       .status(201)
-      .json({ success: true, message: "User created successfully!", userId: newUser.id });
+      .json({ success: true, message: "User created successfully!", user: userInfo, token });
   } catch (err) {
     console.error(err);
     res.status(500).json({ success: false, message: "Failed to create user!" });

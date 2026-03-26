@@ -28,10 +28,6 @@ const useStore = create(
           const response = await api.post("/auth/login", { email, password });
           const { token, user } = response.data;
 
-          // Save token and user to localStorage
-          localStorage.setItem("token", token);
-          localStorage.setItem("user", JSON.stringify(user));
-
           set({
             isAuthenticated: true,
             token,
@@ -54,6 +50,14 @@ const useStore = create(
             email,
             password,
           });
+          const { token, user } = response.data;
+
+          set({
+            isAuthenticated: true,
+            token,
+            user,
+          });
+
           return { success: true };
         } catch (error) {
           return {
@@ -66,10 +70,6 @@ const useStore = create(
       logout: async () => {
         try {
           const response = await api.post("/auth/logout");
-          // Clear token and user from localStorage
-          localStorage.removeItem("token");
-          localStorage.removeItem("user");
-
           // Clear auth header
           delete api.defaults.headers.common["Authorization"];
 
@@ -89,16 +89,11 @@ const useStore = create(
 
       // Initialize auth state from localStorage on app load
       initializeAuth: async () => {
-        const token = localStorage.getItem("token");
-        const user = JSON.parse(localStorage.getItem("user"));
+        // Zustand persist handles loading from localStorage automatically,
+        // but we might need to set the API header if it exists.
+        const { token } = get();
 
-        if (token && user) {
-          set({
-            isAuthenticated: true,
-            token,
-            user,
-          });
-
+        if (token) {
           // Set token for API calls
           api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         }
