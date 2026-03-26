@@ -16,10 +16,10 @@ const Footer = () => {
 
         {/* Links */}
         <div className="flex items-center gap-4 text-zinc-800 dark:text-zinc-300">
-          <p className="text-sm">Created by Sarthak</p>
+          <p className="text-sm">Created by Ravi</p>
           <p className="text-sm">|</p>
           <motion.a
-            href="https://github.com/SarthakShrivastava-04/CP-tracker"
+            href="https://github.com/ravidongre793"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm hover:underline  transition-colors flex items-center gap-2"
