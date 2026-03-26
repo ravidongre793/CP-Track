@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { useTheme } from "../../lib/Theme-provider";
 import { motion } from "framer-motion";
+const MotionLink = motion(Link);
 
 const Navbar = () => {
   const { isAuthenticated, logout, user } = useStore();
@@ -53,13 +54,13 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-4 md:gap-8 mx-auto ">
-          <motion.a
-            href="/dashboard"
+          <MotionLink
+            to="/dashboard"
             className="hover:underline dark:text-zinc-100 hover:opacity-90 transition-colors"
             whileHover={{ y: -2 }}
           >
             Dashboard
-          </motion.a>
+          </MotionLink>
           <motion.a
             href="https://www.youtube.com/@TLE_Eliminators"
             target="_blank"
@@ -70,13 +71,13 @@ const Navbar = () => {
             <Youtube size={16} />
             <span>Solutions</span>
           </motion.a>
-          <motion.a
-            href="/user-form"
+          <MotionLink
+            to="/user-form"
             className="hover:underline dark:text-zinc-100 hover:opacity-90 transition-colors flex items-center gap-1"
             whileHover={{ y: -2 }}
           >
             <span>Update usernames</span>
-          </motion.a>
+          </MotionLink>
         </div>
         <div className="flex items-center gap-4">
           <div className="border-1 h-6 mx-2 border-zinc-300 dark:border-zinc-600"></div>
@@ -100,20 +101,20 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="flex items-center gap-6">
-              <motion.a
-                href="/login"
+              <MotionLink
+                to="/login"
                 className="hover:underline transition-colors"
                 whileHover={{ y: -2 }}
               >
                 Login
-              </motion.a>
-              <motion.a
-                href="/register"
+              </MotionLink>
+              <MotionLink
+                to="/register"
                 className="hover:underline transition-colors"
                 whileHover={{ y: -2 }}
               >
                 Register
-              </motion.a>
+              </MotionLink>
             </div>
           )}
 
@@ -165,22 +166,22 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t p-4 shadow-lg">
           <nav className="flex flex-col space-y-2">
-            <motion.a
-              href="/"
+            <MotionLink
+              to="/"
               onClick={() => setIsMobileMenuOpen(false)}
               className="hover:underline transition-colors"
               whileHover={{ y: -2 }}
             >
               Home
-            </motion.a>
-            <motion.a
-              href="/dashboard"
+            </MotionLink>
+            <MotionLink
+              to="/dashboard"
               onClick={() => setIsMobileMenuOpen(false)}
               className="hover:underline transition-colors"
               whileHover={{ y: -2 }}
             >
               Dashboard
-            </motion.a>
+            </MotionLink>
             <motion.a
               href="https://www.youtube.com/@TLE_Eliminators"
               target="_blank"
@@ -218,22 +219,22 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <motion.a
-                  href="/login"
+                <MotionLink
+                  to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="hover:underline transition-colors"
                   whileHover={{ y: -2 }}
                 >
                   Login
-                </motion.a>
-                <motion.a
-                  href="/register"
+                </MotionLink>
+                <MotionLink
+                  to="/register"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="hover:underline transition-colors"
                   whileHover={{ y: -2 }}
                 >
                   Register
-                </motion.a>
+                </MotionLink>
               </>
             )}
           </nav>
